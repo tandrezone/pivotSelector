@@ -13,13 +13,28 @@ input,
   border-radius: 0 !important;
 }
 
-.main-container {
+.main-container-columns {
+  display: block;
+  padding: 10px;
+}
+.main-container-lines {
+  display: block;
+  width: 300px;
+  padding: 10px;
+}
+.main-container-metrics {
   display: block;
   width: 100%;
   padding: 10px;
 }
-.main-container select {
+
+.main-container-metrics select {
   width: 100px !important;
+  padding: 2px;
+  height: 25px;
+}
+.main-container select {
+  width: 60px !important;
   padding: 2px;
   height: 25px;
 }
@@ -231,7 +246,7 @@ input,
   display: inline-block;
 }
 .main-container .options select {
-  width: 100px;
+  width: 100px!important;
   display: inline-block;
 }
 .main-container .segment,
@@ -275,10 +290,28 @@ input,
   font-size: 24px;
 }
 .main-container .drop-zone.first-inside-group {
+  top: 14px;
+  left: -25px;
+}
+.main-container-metrics .drop-zone.first-inside-group {
   top: 7px;
   left: -20px;
 }
-.main-container .drop-zone.group-empty {
+.main-container .drop-zone-l.group-empty {
+  top: auto;
+  bottom: -12px;
+  width: 100%;
+  height: 38px;
+  border: 5px dashed black;
+}
+.main-container .drop-zone-c.group-empty {
+  top: auto;
+  bottom: -12px;
+  width: 100%;
+  height: 38px;
+  border: 5px dashed black;
+}
+.main-container .drop-zone-m.group-empty {
   top: auto;
   bottom: -12px;
   width: 100%;
@@ -292,12 +325,28 @@ input,
 .main-container .drop-zone.group-empty .glyphicon {
   display: none;
 }
-.main-container .drop-zone.after-elem {
-  left: 175px;
-  bottom: 14px;
+.main-container-columns .drop-zone.after-elem {
+  left: 184px;
+  bottom: 19px;
 }
-.main-container .drop-zone.after-group {
-  left: 160px;
+.main-container-columns .drop-zone.after-group {
+  left: 180px;
+  bottom: 17px;
+}
+.main-container-lines .drop-zone.after-elem {
+  left: -20px
+  bottom: -14px
+}
+.main-container-lines .drop-zone.after-group {
+  left: -26px
+  bottom: -15px;
+}
+.main-container-metrics .drop-zone.after-elem {
+  left: 175px
+  bottom: 14px
+}
+.main-container-metrics .drop-zone.after-group {
+  left: 160px
   bottom: 15px;
 }
 .main-container .drop-zone.drag-hover {

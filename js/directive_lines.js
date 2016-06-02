@@ -60,11 +60,7 @@ app.directive("segmentBuilderGroupL", function() {
                 });
                 return elem;
             }
-            var showJson = function(data){
-              var jsonToSend = JSON.stringify(data);
-              console.log(jsonToSend);
-              console.log(data);
-            }
+
             $scope.addElement = function(type, name, element) {
               var newElem
               var newPosition = getPositionNewElement();
@@ -72,7 +68,6 @@ app.directive("segmentBuilderGroupL", function() {
               newElem = SegmentBuilderL.getNewGroup(newPosition, name, type);
               $scope.data.elements.push(newElem);
               element.type.del=1
-              showJson($scope.data);
             }
 
             $scope.deleteElement = function(id, th, element, thi) {
@@ -89,7 +84,6 @@ app.directive("segmentBuilderGroupL", function() {
                       }
                   }
                 }
-                showJson($scope.data);
             }
 
             $scope.listRelation = SegmentBuilderL.groupInfo.relation;
@@ -162,6 +156,67 @@ app.directive("drag", function($rootScope, $timeout) {
 
         event.stopPropagation();
       });
+    }
+  }
+});
+
+app.directive("dropTargetL", function($rootScope, $timeout, SegmentBuilderL) {
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: true,
+    template: '<div ng-hide="checkIfHide()" class="drop-zone drop-zone-l" drop="lines" ng-if="!lines">\
+                  <span class="glyphicon glyphicon-arrow-right"></span>\
+               </div>',
+    link: function(scope, element, attrs) {
+        element.addClass(attrs.myClass);
+
+        scope.checkIfHide = function() {
+
+            var checker = (
+                      $rootScope.draggedElement &&
+                      (
+                        (attrs.hideWhenIdBefore && $rootScope.draggedElement.id == attrs.hideWhenIdBefore) ||
+                        (attrs.hideWhenIdAfter && $rootScope.draggedElement.id == attrs.hideWhenIdAfter)
+                      )
+                  );
+            return checker;
+        }
+
+        var dropStyle = 'drag-hover';
+
+        element.bind('dragenter', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            // why? because http://stackoverflow.com/questions/14203734/dragend-dragenter-and-dragleave-firing-off-immediately-when-i-drag
+            $timeout(function() { element.addClass(dropStyle); });
+        });
+
+        element.bind('dragleave', function(event) {
+            event.stopPropagation();
+
+            $timeout(function() { element.removeClass(dropStyle); });
+        });
+
+        element.bind('dragover', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+
+        element.bind('drop', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            $timeout(function() { element.removeClass(dropStyle); });
+
+            SegmentBuilderL.moveElement(
+                $rootScope.draggedElement.id,
+                $rootScope.draggedElement.parent_id,
+                scope.data.id,
+                attrs.position
+            );
+        });
     }
   }
 });

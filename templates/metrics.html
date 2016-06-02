@@ -13,7 +13,7 @@
           <!-- modal with categories -->
 <div class="modal fade" id="myModalM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog" role="document">
-  <div class="modal-content">
+  <div class="modal-content modal-content-metrics">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <h3 class="modal-title text-center grey" id="myModalLabel"><strong>Column Types</strong></h3>
@@ -54,10 +54,10 @@
                     class="level-{{ level }}"
                     ng-class="{true:'li-group', false:'li-condition'}[element.type == 'group']" style="width:180px;float:left;left:-150px;">
 
-                    <drop-target ng-if="$index == 0"
+                    <drop-target-m ng-if="$index == 0"
                                  my-class="first-inside-group"
                                  position="0"
-                                 hide-when-id-after="{{ element.id }}"></drop-target>
+                                 hide-when-id-after="{{ element.id }}"></drop-target-m>
 
                     <div ng-switch="element.type">
 
@@ -69,10 +69,10 @@
                                                        delete-please="deleteElement(id, this, element, $this)"
                                                        duplicate-please="duplicateElement(id)"></segment-builder-criterion-m>
 
-                            <drop-target my-class="after-elem"
+                            <drop-target-m my-class="after-elem"
                                          position="{{ $index + 1 }}"
                                          hide-when-id-before="{{ element.id }}"
-                                         hide-when-id-after="{{ filteredData[$index+1]['id'] }}"></drop-target>
+                                         hide-when-id-after="{{ filteredData[$index+1]['id'] }}"></drop-target-m>
                         </div>
 
 
@@ -82,7 +82,7 @@
             </ul>
 
             <div ng-if="data.elements.length == 0">
-                <drop-target my-class="group-empty" position="0"></drop-target>
+                <drop-target-m my-class="group-empty" position="0"></drop-target-m>
             </div>
         </li>
     </script>

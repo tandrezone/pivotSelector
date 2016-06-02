@@ -1,12 +1,7 @@
 
 app.controller('start', function($scope, $rootScope) {
-  $scope.templates =
-      [ { name: 'columns.html', url: 'columns.html'}
-       ];
-    $scope.template = $scope.templates[0];
-
 });
-app.controller('MainControllerC', function($scope, $rootScope, SegmentBuilderC) {
+app.controller('MainControllerC', function($scope, $rootScope, SegmentBuilderC, Request) {
     $scope.dataMainGroup = SegmentBuilderC.currentSegment;
 });
 app.controller('MainControllerL', function($scope, $rootScope, SegmentBuilderL) {

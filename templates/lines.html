@@ -1,6 +1,6 @@
 <!-- LINES -->
 <div class="container">
-  <div class="main-container" ng-controller="MainControllerL" >
+  <div class="main-container-lines main-container" ng-controller="MainControllerL" >
     <ul ng-class="{'is-dragging': isDragging, 'is-dragging-just-finished': isDraggingJustFinished}" >
       <segment-builder-group-l class="li-group level-0" level="1" data="dataMainGroup"></segment-builder-group-l>
     </ul>
@@ -44,11 +44,11 @@
         </div>
         <ul ng-show="data.elements.length > 0">
           <li ng-repeat="element in data.elements | orderBy:'position' as filteredData track by element.id" class="level-{{ level }}" ng-class="{true:'li-group', false:'li-condition'}[element.type == 'group']">
-            <drop-target ng-if="$index == 0" my-class="first-inside-group" position="0" hide-when-id-after="{{ element.id }}"></drop-target>
+            <drop-target-l ng-if="$index == 0" my-class="first-inside-group" position="0" hide-when-id-after="{{ element.id }}"></drop-target-l>
             <div ng-switch="element.type">
                 <div ng-switch-when="group">
                     <segment-builder-element-l data="element" parent-id="data.id" level="level+1" delete-please="deleteElement(id, this, element, $this)" duplicate-please="duplicateElement(id)"></segment-builder-element-l>
-                    <drop-target my-class="after-group" position="{{ $index + 1 }}" hide-when-id-before="{{ element.id }}" hide-when-id-after="{{ filteredData[$index+1]['id'] }}"></drop-target>
+                    <drop-target-l my-class="after-group" position="{{ $index + 1 }}" hide-when-id-before="{{ element.id }}" hide-when-id-after="{{ filteredData[$index+1]['id'] }}"></drop-target-l>
                       {{element.name}}
                 </div>
             </div>
@@ -56,7 +56,7 @@
         </ul>
         <div ng-if="data.elements.length == 0">
           <h4 class="empty-group"></h4>
-          <drop-target my-class="group-empty" position="0"></drop-target>
+          <drop-target-l my-class="group-empty" position="0"></drop-target-l>
         </div>
       </li>
   </script>
