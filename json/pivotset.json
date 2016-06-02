@@ -1,0 +1,232 @@
+{
+  "dateRange": {
+    "startDate": "2015-01-01T00:00:00",
+    "endDate": "2015-06-30T00:00:00"
+  },
+  "variables": [
+    {
+      "type": "SocioDemo",
+      "code": "precagesr",
+      "name": "Age",
+      "segments": [
+        {
+          "id": 1,
+          "name": "Moins de 15 ans"
+        },
+        {
+          "id": 2,
+          "name": "15-24 ans"
+        },
+        {
+          "id": 3,
+          "name": "25-34 ans"
+        },
+        {
+          "id": 4,
+          "name": "35-49 ans"
+        },
+        {
+          "id": 5,
+          "name": "50 et plus"
+        },
+        {
+          "id": 6,
+          "name": "NR"
+        }
+      ]
+    },
+    {
+      "type": "SocioDemo",
+      "code": "psexerec",
+      "name": "Gender",
+      "segments": [
+        {
+          "id": 1,
+          "name": "Un homme"
+        },
+        {
+          "id": 2,
+          "name": "Une femme"
+        },
+        {
+          "id": 3,
+          "name": "NR"
+        }
+      ]
+    },
+    {
+      "type": "SocioDemo",
+      "code": "preccsp",
+      "name": "Occupation",
+      "segments": [
+        {
+          "id": 1,
+          "name": "CSP+"
+        },
+        {
+          "id": 2,
+          "name": "CSP-"
+        },
+        {
+          "id": 3,
+          "name": "Inactifs"
+        },
+        {
+          "id": 4,
+          "name": "NR"
+        }
+      ]
+    },
+    {
+      "type": "SocioDemo",
+      "code": "pagglor",
+      "name": "City Size",
+      "segments": [
+        {
+          "id": 1,
+          "name": "agglo + de 100000"
+        },
+        {
+          "id": 2,
+          "name": "agglo -de 100000"
+        },
+        {
+          "id": 3,
+          "name": "NR"
+        }
+      ]
+    },
+    {
+      "type": "SocioDemo",
+      "code": "pconsotv",
+      "name": "Consommation TV",
+      "segments": [
+        {
+          "id": 1,
+          "name": "Petits téléspectateurs"
+        },
+        {
+          "id": 2,
+          "name": "Moyens téléspectateurs"
+        },
+        {
+          "id": 3,
+          "name": "Gros téléspectateurs"
+        },
+        {
+          "id": 4,
+          "name": "NR"
+        }
+      ]
+    },
+    {
+      "type": "SocioDemo",
+      "code": "preception_tv",
+      "name": "Type de reception TV",
+      "segments": [
+        {
+          "id": 1,
+          "name": "Offre restreinte"
+        },
+        {
+          "id": 2,
+          "name": "Offre élargie"
+        },
+        {
+          "id": 3,
+          "name": "NR"
+        }
+      ]
+    },
+    {
+      "type": "Programs",
+      "code": "programname",
+      "name": "TV Programs Name",
+      "segments": null
+    },
+    {
+      "type": "Programs",
+      "code": "date",
+      "name": "Date (Jour/mois/année)",
+      "segments": null
+    },
+    {
+      "type": "Programs",
+      "code": "weekday",
+      "name": "Jour de la semaine (lundi / mardi …)",
+      "segments": null
+    },
+    {
+      "type": "Programs",
+      "code": "day",
+      "name": "Jour",
+      "segments": null
+    },
+    {
+      "type": "Programs",
+      "code": "year",
+      "name": "Année",
+      "segments": null
+    },
+    {
+      "type": "Programs",
+      "code": "month",
+      "name": "Mois",
+      "segments": null
+    },
+    {
+      "type": "Programs",
+      "code": "quarter",
+      "name": "Trimestre",
+      "segments": null
+    },
+    {
+      "type": "Programs",
+      "code": "yearmonth",
+      "name": "Année Mois",
+      "segments": null
+    },
+    {
+      "type": "Programs",
+      "code": "weeknumber",
+      "name": "Numéro de la semaine (S1 S2 …)",
+      "segments": null
+    },
+    {
+      "type": "Indicators",
+      "code": "satisfaction",
+      "name": "Satisfaction",
+      "segments": null
+    },
+    {
+      "type": "Indicators",
+      "code": "attention",
+      "name": "Attention",
+      "segments": null
+    },
+    {
+      "type": "Others",
+      "code": "programcode",
+      "name": "Code du programme",
+      "segments": null
+    }
+  ],
+  "variableTypes": [
+    {
+      "code": "SocioDemo",
+      "name": "SOCI-DEMO"
+    },
+    {
+      "code": "Programs",
+      "name": "DETAILS PROGRAMMES"
+    },
+    {
+      "code": "Indicators",
+      "name": "INDICATEURS"
+    },
+    {
+      "code": "Others",
+      "name": "AUTRE"
+    }
+  ]
+}
