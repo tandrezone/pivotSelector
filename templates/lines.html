@@ -44,11 +44,11 @@
         </div>
         <ul ng-show="data.elements.length > 0">
           <li ng-repeat="element in data.elements | orderBy:'position' as filteredData track by element.id" class="level-{{ level }}" ng-class="{true:'li-group', false:'li-condition'}[element.type == 'group']">
-            <drop-target-l ng-if="$index == 0" my-class="first-inside-group" position="0" hide-when-id-after="{{ element.id }}"></drop-target-l>
+            <drop-target-l area="lines" ng-if="$index == 0" my-class="first-inside-group" position="0" hide-when-id-after="{{ element.id }}"></drop-target-l>
             <div ng-switch="element.type">
                 <div ng-switch-when="group">
                     <segment-builder-element-l data="element" parent-id="data.id" level="level+1" delete-please="deleteElement(id, this, element, $this)" duplicate-please="duplicateElement(id)"></segment-builder-element-l>
-                    <drop-target-l my-class="after-group" position="{{ $index + 1 }}" hide-when-id-before="{{ element.id }}" hide-when-id-after="{{ filteredData[$index+1]['id'] }}"></drop-target-l>
+                    <drop-target-l  area="lines" my-class="after-group" position="{{ $index + 1 }}" hide-when-id-before="{{ element.id }}" hide-when-id-after="{{ filteredData[$index+1]['id'] }}"></drop-target-l>
                       {{element.name}}
                 </div>
             </div>
@@ -56,7 +56,7 @@
         </ul>
         <div ng-if="data.elements.length == 0">
           <h4 class="empty-group"></h4>
-          <drop-target-l my-class="group-empty" position="0"></drop-target-l>
+          <drop-target-l area="lines" my-class="group-empty" position="0"></drop-target-l>
         </div>
       </li>
   </script>
