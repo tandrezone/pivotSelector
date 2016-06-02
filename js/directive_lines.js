@@ -165,7 +165,7 @@ app.directive("dropTargetL", function($rootScope, $timeout, SegmentBuilderL) {
     restrict: 'E',
     replace: true,
     scope: true,
-    template: '<div ng-hide="checkIfHide()" class="drop-zone drop-zone-l" drop="lines" ng-if="!lines">\
+    template: '<div ng-hide="checkIfHide()" class="drop-zone drop-zone-l">\
                   <span class="glyphicon glyphicon-arrow-right"></span>\
                </div>',
     link: function(scope, element, attrs) {

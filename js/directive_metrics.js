@@ -231,8 +231,8 @@ app.directive("drag", function($rootScope, $timeout) {
     }
   }
 });
-/*
-app.directive("dropTarget", function($rootScope, $timeout, SegmentBuilderM) {
+
+app.directive("dropTargetM", function($rootScope, $timeout, SegmentBuilderM) {
   return {
     restrict: 'E',
     replace: true,
@@ -290,4 +290,3 @@ app.directive("dropTarget", function($rootScope, $timeout, SegmentBuilderM) {
     }
   }
 });
-*/

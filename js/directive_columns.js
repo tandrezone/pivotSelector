@@ -166,7 +166,7 @@ app.directive("drag", function($rootScope, $timeout) {
   }
 });
 
-app.directive("dropTarget", function($rootScope, $timeout, SegmentBuilderC) {
+app.directive("dropTargetC", function($rootScope, $timeout, SegmentBuilderC) {
   return {
     restrict: 'E',
     replace: true,

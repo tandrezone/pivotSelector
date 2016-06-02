@@ -1,7 +1,7 @@
 
 app.controller('start', function($scope, $rootScope) {
 });
-app.controller('MainControllerC', function($scope, $rootScope, SegmentBuilderC, Request) {
+app.controller('MainControllerC', function($scope, $rootScope, SegmentBuilderC) {
     $scope.dataMainGroup = SegmentBuilderC.currentSegment;
 });
 app.controller('MainControllerL', function($scope, $rootScope, SegmentBuilderL) {
