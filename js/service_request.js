@@ -1,3 +1,3 @@
-app.factory('request', function(data) {
+app.factory('Request', function(data) {
   debugger;
 });
