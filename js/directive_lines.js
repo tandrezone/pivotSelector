@@ -1,3 +1,8 @@
+app.directive('lines', function() {
+  return {
+    templateUrl: 'templates/lines.html'
+  };
+});
 app.directive("segmentBuilderGroupL", function() {
     return {
         restrict: "E",

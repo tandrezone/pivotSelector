@@ -1,3 +1,8 @@
+app.directive('columns', function() {
+  return {
+    templateUrl: 'templates/columns.html'
+  };
+});
 app.directive("segmentBuilderGroupC", function() {
     return {
         restrict: "E",

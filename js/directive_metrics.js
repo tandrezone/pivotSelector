@@ -1,4 +1,8 @@
-
+app.directive('metrics', function() {
+  return {
+    templateUrl: 'templates/metrics.html'
+  };
+});
 app.directive("segmentBuilderGroupM", function() {
     return {
         restrict: "E",
