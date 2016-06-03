@@ -1,0 +1,11 @@
+<table border="1" ng-controller="HarrisController">
+    <tr ng-repeat="row in Data.Rows">
+        <td colspan="{{column.Colspan}}" rowspan="{{column.Rowspan}}" ng-class="{'header': column.IsHeader}" ng-repeat="column in row.Columns">
+            {{column.Text}}
+            <span ng-if="column.CanCollapse">
+                <i aria-hidden="true" class="fa fa-caret-right" ng-if="column.IsCollapsed && column.IsCollapsed === 'true'"></i>
+                <i aria-hidden="true" class="fa fa-caret-down" ng-if="column.IsCollapsed === undefined || column.IsCollapsed === 'false'"></i>
+            </span>
+        </td>
+    </tr>
+</table>

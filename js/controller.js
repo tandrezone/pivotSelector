@@ -10,3 +10,9 @@ app.controller('MainControllerL', function($scope, $rootScope, SegmentBuilderL) 
 app.controller('MainControllerM', function($scope, $rootScope, SegmentBuilderM) {
     $scope.dataMainGroup = SegmentBuilderM.currentSegment;
 });
+
+app.controller('HarrisController', function($scope, $http) {
+  $http.get('json/response.json').success(function (response) {
+      $scope.Data = response;
+  });
+});

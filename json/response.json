@@ -1,0 +1,516 @@
+{
+  "Rows": [
+    {
+      "Columns": [
+        {
+          "Text": "Canal",
+          "Colspan": "1",
+          "Rowspan": "4",
+          "CanCollapse": "true",
+          "IsCollapsed": "true",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "Data",
+          "Colspan": "1",
+          "Rowspan": "4",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "Métrica",
+          "Colspan": "1",
+          "Rowspan": "4",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "Sexo",
+          "Colspan": "4",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "País",
+          "Colspan": "2",
+          "Rowspan": "3",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "M",
+          "Colspan": "2",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "F",
+          "Colspan": "2",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "Idade",
+          "Colspan": "4",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "18-25",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "25+",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "18-25",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "25+",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "Portugal",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "França",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "1",
+          "Colspan": "1",
+          "Rowspan": "4",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "2016-05-23",
+          "Colspan": "1",
+          "Rowspan": "2",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "Like",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "Satisfação",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "2016-05-24",
+          "Colspan": "1",
+          "Rowspan": "2",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "Like",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "Satisfação",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "2",
+          "Colspan": "1",
+          "Rowspan": "4",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "2016-05-23",
+          "Colspan": "1",
+          "Rowspan": "2",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "Like",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "Satisfação",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "2016-05-24",
+          "Colspan": "1",
+          "Rowspan": "2",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "Like",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        }
+      ]
+    },
+    {
+      "Columns": [
+        {
+          "Text": "Satisfação",
+          "Colspan": "1",
+          "Rowspan": "1",
+          "CanCollapse": "false",
+          "IsCollapsed": "false",
+          "IsHeader": "true"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        },
+        {
+          "Text": "",
+          "Colspan": "1",
+          "Rowspan": "1"
+        }
+      ]
+    }
+  ]
+}
