@@ -11,8 +11,8 @@ app.controller('MainControllerM', function($scope, $rootScope, SegmentBuilderM) 
     $scope.dataMainGroup = SegmentBuilderM.currentSegment;
 });
 
-app.controller('HarrisController', function($scope, $http) {
-  $http.get('json/response.json').success(function (response) {
+app.controller('HarrisController', function($scope, apiCall) {
+    apiCall.getResponse().then(function(response) {
       $scope.Data = response;
-  });
+    });
 });
