@@ -37,7 +37,7 @@
         <!-- end of modal with categories -->
         <div class="options">
             <span ng-hide="level == 1" class="glyphicon glyphicon-move" aria-hidden="true"></span>
-            <div ng-if="level == 1" class="" data-toggle="modal" ng-click="open('#myModalC')"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="text-center pull-right">{{dtype}}</span></div>
+            <div ng-if="level == 1" class="" data-toggle="modal"  data-target="#myModalC"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="text-center pull-right">{{dtype}}</span></div>
             <div ng-click="deletePlease({id: data.id})" class="pull-right" ng-if="level > 1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
         </div>
         <ul ng-show="data.elements.length > 0" class="clearfix">
