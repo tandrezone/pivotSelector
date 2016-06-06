@@ -2,10 +2,8 @@
     <tr ng-repeat="row in Data.Rows">
         <td colspan="{{column.Colspan}}" rowspan="{{column.Rowspan}}" ng-class="{'header': column.IsHeader}" ng-repeat="column in row.Columns">
             {{column.Text}}
-            <span ng-if="column.CanCollapse">
-                <i aria-hidden="true" class="fa fa-caret-right" ng-if="column.IsCollapsed && column.IsCollapsed === 'true'"></i>
-                <i aria-hidden="true" class="fa fa-caret-down" ng-if="column.IsCollapsed === undefined || column.IsCollapsed === 'false'"></i>
-            </span>
+            <span class="less" ng-if="column.CanCollapse && column.IsCollapsed && column.IsCollapsed === 'true'">-</span>
+            <span class="plus" ng-if="column.CanCollapse && (column.IsCollapsed === undefined || column.IsCollapsed === 'false')">+</span>
         </td>
     </tr>
 </table>
