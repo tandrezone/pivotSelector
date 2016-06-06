@@ -1,4 +1,4 @@
-<table border="1" ng-controller="HarrisController">
+<table border="1" class="pull-right">
     <tr ng-repeat="row in Data.Rows">
         <td colspan="{{column.Colspan}}" rowspan="{{column.Rowspan}}" ng-class="{'header': column.IsHeader}" ng-repeat="column in row.Columns">
             {{column.Text}}

@@ -11,31 +11,35 @@
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/app.js"></script>
     <script src="js/controller.js"></script>
-    <script src="js/service.js"></script>
-    <script src="js/directive.js"></script>
-    <script src="js/apiCall.js"></script>
+    <script src="js/columns/service.js"></script>
+    <script src="js/columns/directives.js"></script>
+    <script src="js/lines/service.js"></script>
+    <script src="js/lines/directives.js"></script>
+    <script src="js/metrics/service.js"></script>
+    <script src="js/metrics/directives.js"></script>
+    <script src="js/grid/directives.js"></script>
+    <script src="js/api/apiCall.js"></script>
 
   </head>
 
   <body>
-    <div >
-      <div ng-app="app">
-        <div id="pivot">
-          <div class="columns col-md-12 col-xs-12 col-sm-12">
-            <div columns></div>
+    <div ng-app="app">
+      <div id="pivot">
+        <div class="columns col-md-12 col-xs-12 col-sm-12">
+          <div columns></div>
+        </div>
+        <div class="columns col-md-12 col-xs-12 col-sm-12">
+          <div class="columns col-md-4 col-xs-4 col-sm-4">
+            <div lines></div>
           </div>
-          <div class="columns col-md-12 col-xs-12 col-sm-12">
-            <div class="columns col-md-4 col-xs-4 col-sm-4">
-              <div lines></div>
-            </div>
-            <div class="columns col-md-8 col-xs-8 col-sm-8">
-              <div grid></div>
-            </div>
-          </div>
-          <div class="columns col-md-12 col-xs-12 col-sm-12">
-            <div metrics></div>
+          <div class="columns col-md-8 col-xs-8 col-sm-8">
+            <div grid></div>
           </div>
         </div>
-    </div>
+        <div class="columns col-md-12 col-xs-12 col-sm-12">
+          <div metrics></div>
+        </div>
+      </div>
+  </div>
   </body>
 </html>
