@@ -1,0 +1,7 @@
+<div>
+    <div class="switch-pivot-button pull-left" ng-repeat="d in Data" >
+        <div >
+            <span ng-click="Cstate($index)" ng-class="idx == $index ? 'selected' : ''">{{d.DisplayName}}</span>
+        </div>
+    </div>
+</div>

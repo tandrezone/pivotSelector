@@ -1,5 +1,5 @@
-﻿//serviço para lidar com as colunas
-app.factory('SegmentBuilderC', function (apiCall) {
+//serviço para lidar com as colunas
+app.factory('SegmentBuilderC', function (apiCall, connector) {
 
     var groupInfo = {
 
@@ -21,6 +21,30 @@ app.factory('SegmentBuilderC', function (apiCall) {
 
         ]
     };
+
+    response = null;
+
+    var setData = function (newData) {
+        data.elements = newData[0].elements;
+        apiCall.getCategories().then(function (response) {
+            response = removeFromCategories(data, response);
+            connector.setCategoriesC(response);
+        });
+    }
+    var removeFromCategories = function (data,response) {
+        for (var i = 0; i < data.elements.length; i++) {
+            for (var b = 0; b < response.variables.length; b++) {
+                if (response.variables[b].name == data.elements[i].name) {
+                    response.variables[b].remove = 1;
+                }
+            }
+            if (data.elements[i].elements.length != 0) {
+                removeFromCategories(data.elements[i],response);
+            }
+        }
+        return response
+    }
+
     var getNewGroup = function (position, name, type, code) {
         var group = angular.copy(new_element.group);
         group.id = 'gr' + Math.floor((Math.random() * 100000) + 1);
@@ -153,7 +177,9 @@ app.factory('SegmentBuilderC', function (apiCall) {
             var element_removed = removeElementFromGroup([data], element_id, parent_id, new_parent_id, new_position);
             is_ok = addElementToGroup([data], element_removed, new_parent_id, new_position);
         }
-        apiCall.genRequest(data);
+        apiCall.getRequest(data).then(function (response) {
+            connector.setGrid(response);
+        });
     };
 
 
@@ -162,6 +188,7 @@ app.factory('SegmentBuilderC', function (apiCall) {
         getNewGroup: getNewGroup,
         moveElement: moveElement,
         groupInfo: groupInfo,
+        setData:setData,
         currentSegment: data
     };
 });

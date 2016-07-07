@@ -1,6 +1,6 @@
-﻿//Este serviço destina-se a lidar com os dados provenientes das metricas
+//Este serviço destina-se a lidar com os dados provenientes das metricas
 //depende da apiCall
-app.factory('SegmentBuilderM', function (apiCall) {
+app.factory('SegmentBuilderM', function (apiCall, connector,$log) {
     //aqui é definido se é horizontal ou vertical
     var groupInfo = {
         relation: [
@@ -29,6 +29,33 @@ app.factory('SegmentBuilderM', function (apiCall) {
 
         ]
     };
+
+    response = null;
+
+    var setData = function (newData) {
+        data.relation = newData[2].relation;
+        data.elements = newData[2].elements;
+        apiCall.getCategories().then(function (response) {
+            response = removeFromCategories(data, response);
+            connector.setCategoriesM(response);
+        });
+    }
+    var removeFromCategories = function (data, response) {
+        for (var i = 0; i < data.elements.length; i++) {
+            for (var b = 0; b < response.variables.length; b++) {
+                if (response.variables[b].name == data.elements[i].name) {
+                    response.variables[b].remove = 1;
+                }
+            }
+            if (data.type != 'metrics') {
+                if (data.elements[i].elements.length != 0) {
+                    removeFromCategories(data.elements[i], response);
+                }
+            }
+
+        }
+        return response
+    }
 
 
     var getNewCriterion = function (position, name, type, code) {
@@ -166,7 +193,6 @@ app.factory('SegmentBuilderM', function (apiCall) {
                     _.forEach(elements_array[i].elements, function (elem) {
                         if (elem.id == element_id) {
                             elem.position = new_position_value;
-                            console.log('UPDATE > ', new_position, ' (elem.position=', new_position_value, ') > ', elem);
                         }
                     });
                 }
@@ -182,8 +208,6 @@ app.factory('SegmentBuilderM', function (apiCall) {
     var moveElement = function (element_id, parent_id, new_parent_id, new_position) {
         var is_ok;
 
-        console.log('Move element id ', element_id, ' from group ', parent_id, ' into the group ', new_parent_id, ' at the position ', new_position);
-
         if (new_parent_id == parent_id) {
             is_ok = moveElementInsideGroup([data], element_id, parent_id, new_position);
         }
@@ -192,7 +216,9 @@ app.factory('SegmentBuilderM', function (apiCall) {
 
             is_ok = addElementToGroup([data], element_removed, new_parent_id, new_position);
         }
-        apiCall.genRequest(data);
+        apiCall.getRequest(data).then(function (response) {
+            connector.setGrid(response);
+        });
 
     };
 
@@ -205,6 +231,7 @@ app.factory('SegmentBuilderM', function (apiCall) {
         duplicateElement: duplicateElement,
         moveElement: moveElement,
         groupInfo: groupInfo,
+        setData: setData,
         currentSegment: data
     };
 });

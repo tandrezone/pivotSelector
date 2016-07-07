@@ -1,16 +1,17 @@
-﻿//esta directiva corre o template columns ao usar <div lines></div>
+//esta directiva corre o template columns ao usar <div lines></div>
 app.directive('lines', function () {
     return {
         templateUrl: 'templates/lines.html'
     };
 });
-//Devido ao facto deste template ser recursivo ou seja o codigo é inserido dentro de codigo infinitas vezes foi necessario esta 
+//Devido ao facto deste template ser recursivo ou seja o codigo é inserido dentro de codigo infinitas vezes foi necessario esta
 //segunda directiva que trata do template a ser inseridodentro do template
 //Este template usa dois servicoso SegmentBuilderC para lidar com o json que gera o template e o apiCall para os pedidos ao webservice
 app.directive("segmentBuilderGroupL", function () {
     return {
         restrict: "E",
         replace: true,
+        transclude:true,
         scope: {
             data: '=',
             parentId: '=',
@@ -20,12 +21,14 @@ app.directive("segmentBuilderGroupL", function () {
             deletePlease: '&'
         },
         templateUrl: 'segmentBuilderGroupTplL',
-        controller: function ($scope, $rootScope, SegmentBuilderL, apiCall) {
-            apiCall.getCategories().then(function (response) {
-                sortResponse(response);
+        controller: function ($scope, $rootScope, SegmentBuilderL, apiCall, connector) {
+
+            $rootScope.$on('categoriesL', function (event, args) {
+                sortResponse(args);
             });
 
             var sortResponse = function (response) {
+
                 $scope.varTypes = response.variableTypes
                 $scope.variables = response.variables;
                 var vars = [];
@@ -35,7 +38,7 @@ app.directive("segmentBuilderGroupL", function () {
                             vars[j] = { "type": $scope.varTypes[j].code, "elements": [] };
                         }
                         if ($scope.variables[i].type == vars[j].type) {
-                            vars[j].elements.push({ "name": $scope.variables[i].name, "type": $scope.variables[i].type });
+                            vars[j].elements.push({ "name": $scope.variables[i].name, "type": $scope.variables[i].type, "code": $scope.variables[i].code, "remove": $scope.variables[i].remove });
                         }
                     }
                 }
@@ -63,8 +66,10 @@ app.directive("segmentBuilderGroupL", function () {
                 $rootScope.isDraggingJustFinished = false;
                 newElem = SegmentBuilderL.getNewGroup(newPosition, name, type, code);
                 $scope.data.elements.push(newElem);
-                element.type.del = 1
-                apiCall.genRequest($scope.data);
+                element.type.remove = 1
+                apiCall.getRequest($scope.data).then(function (response) {
+                    connector.setGrid(response);
+                });
             }
 
             $scope.open = function (id) {
@@ -81,11 +86,13 @@ app.directive("segmentBuilderGroupL", function () {
                 for (var a = 0; a < $scope.varstypes.length; a++) {
                     for (var b = 0; b < $scope.varstypes[a].elements.length; b++) {
                         if ($scope.varstypes[a].elements[b].name == element.name) {
-                            $scope.varstypes[a].elements[b].del = 0
+                            $scope.varstypes[a].elements[b].remove = 0
                         }
                     }
                 }
-                apiCall.genRequest($scope.data);
+                apiCall.getRequest($scope.data).then(function (response) {
+                    connector.setGrid(response);
+                });
             }
 
             $scope.listRelation = SegmentBuilderL.groupInfo.relation;
@@ -173,16 +180,18 @@ app.directive("dropTargetL", function ($rootScope, $timeout, SegmentBuilderL) {
         link: function (scope, element, attrs) {
             element.addClass(attrs.myClass);
 
-            scope.checkIfHide = function () {
 
-                return (
+            scope.checkIfHide = function () {
+                var check = (
                           $rootScope.draggedElement &&
                           (
                             (attrs.hideWhenIdBefore && $rootScope.draggedElement.id == attrs.hideWhenIdBefore) ||
                             (attrs.hideWhenIdAfter && $rootScope.draggedElement.id == attrs.hideWhenIdAfter)
                           )
                       );
+                return check;
             }
+
 
             var dropStyle = 'drag-hover';
 

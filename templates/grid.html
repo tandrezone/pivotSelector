@@ -1,9 +1,31 @@
-<table border="1" class="pull-right">
-    <tr ng-repeat="row in Data.Rows">
-        <td colspan="{{column.Colspan}}" rowspan="{{column.Rowspan}}" ng-class="{'header': column.IsHeader}" ng-repeat="column in row.Columns">
-            {{column.Text}}
-            <span class="less" ng-if="column.CanCollapse && column.IsCollapsed && column.IsCollapsed === 'true'">-</span>
-            <span class="plus" ng-if="column.CanCollapse && (column.IsCollapsed === undefined || column.IsCollapsed === 'false')">+</span>
-        </td>
-    </tr>
-</table>
+<div ng-controller="grid">
+    <div ng-show="Data.Rows">
+        <table border="1" class="pull-right">
+            <!--
+            <tr ng-repeat="row in Data.Rows | limitTo : headerHeight+1 : 0">
+                <td colspan="{{column.Colspan}}" rowspan="{{column.Rowspan}}" ng-class="{'header': column.IsHeader}" ng-repeat="column in row.Columns ">
+                    <span>{{clean(column.Text)}}</span>
+                    <span class="less" ng-if="column.CanCollapse && column.IsCollapsed && column.IsCollapsed === 'true'">-</span>
+                    <span class="plus" ng-if="column.CanCollapse && (column.IsCollapsed === undefined || column.IsCollapsed === 'false')">+</span>
+                </td>
+            </tr>
+                -->
+            <tr ng-repeat="row in Data.Rows ">
+                <!--| limitTo : nrofpages : begin" ng-hide="$index <= headerHeight-->
+                <td colspan="{{column.Colspan}}" rowspan="{{column.Rowspan}}" ng-class="{'header': column.IsHeader}" ng-repeat="column in row.Columns ">
+                    <span>{{clean(column.Text)}}</span>
+                    <span class="less" ng-if="column.CanCollapse && column.IsCollapsed && column.IsCollapsed === 'true'">-</span>
+                    <span class="plus" ng-if="column.CanCollapse && (column.IsCollapsed === undefined || column.IsCollapsed === 'false')">+</span>
+                </td>
+            </tr>
+        </table>
+        <div class="clearfix">
+            <div class="clear"></div>
+            <div id="page-selection" style="float:right" ng-show="nrofpagesPernrofResults > 1 " ></div>
+            <select class="form-control" style="float:right;margin: 20px;width:100px;" id="sel1" ng-model="nrofpages">
+                <option ng-repeat="nrx in nrxOptions" class="sel_{{$index}}" value="{{nrx.val}}" ng-selected="$index == 0">{{nrx.txt}}</option>
+            </select>
+        </div>
+    </div>
+    <div ng-hide="Data.Rows" style="text-align:center;margin:50px;"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size:100px"></span></div>
+</div>

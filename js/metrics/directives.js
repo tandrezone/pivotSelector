@@ -4,7 +4,7 @@ app.directive('metrics', function () {
     templateUrl: 'templates/metrics.html'
   };
 });
-//Devido ao facto deste template ser recursivo ou seja o codigo é inserido dentro de codigo infinitas vezes foi necessario esta 
+//Devido ao facto deste template ser recursivo ou seja o codigo Ã© inserido dentro de codigo infinitas vezes foi necessario esta
 //segunda directiva que trata do template a ser inseridodentro do template
 //Este template usa dois servicoso SegmentBuilderC para lidar com o json que gera o template e o apiCall para os pedidos ao webservice
 app.directive("segmentBuilderGroupM", function() {
@@ -19,27 +19,28 @@ app.directive("segmentBuilderGroupM", function() {
             deletePlease: '&'
         },
         templateUrl:  'segmentBuilderGroupTplM',
-        controller: function($scope, $rootScope, SegmentBuilderM, apiCall) {
-            apiCall.getCategories().then(function (response) {
-                sortResponse(response);
+        controller: function($scope, $rootScope, SegmentBuilderM, apiCall, connector, $timeout) {
+            $rootScope.$on('categoriesM', function (event, args) {
+                sortResponse(args);
             });
 
-            var sortResponse = function(response) {
-            $scope.varTypes = response.variableTypes
-            $scope.variables = response.variables;
-            var vars = [];
-            for(var j = 0; j < $scope.varTypes.length;j++){
-              for(var i = 0; i < $scope.variables.length;i++){
-                  if(vars[j] == undefined){
-                    vars[j] = {"type": $scope.varTypes[j].code, "elements":[]};
-                  }
-                  if($scope.variables[i].type == vars[j].type){
-                    vars[j].elements.push({"name" :$scope.variables[i].name, "type" : $scope.variables[i].type});
-                  }
-                }
-              }
 
-            $scope.varstypes = vars
+            var sortResponse = function (response) {
+
+                $scope.varTypes = response.variableTypes
+                $scope.variables = response.variables;
+                var vars = [];
+                for (var j = 0; j < $scope.varTypes.length; j++) {
+                    for (var i = 0; i < $scope.variables.length; i++) {
+                        if (vars[j] == undefined) {
+                            vars[j] = { "type": $scope.varTypes[j].code, "elements": [] };
+                        }
+                        if ($scope.variables[i].type == vars[j].type) {
+                            vars[j].elements.push({ "name": $scope.variables[i].name, "type": $scope.variables[i].type, "code": $scope.variables[i].code, "remove": $scope.variables[i].remove });
+                        }
+                    }
+                }
+                $scope.varstypes = vars;
             }
             var getPositionNewElement = function() {
                 var maxPositionValue = 0;
@@ -56,19 +57,27 @@ app.directive("segmentBuilderGroupM", function() {
                 });
                 return elem;
             }
+            $scope.changeRelation = function (elem) {
+                $timeout(function() {
+                    apiCall.getRequest($scope.data).then(function (response) {
+                        connector.setGrid(response);
+                    });
+                }, 1000);
+            }
             $scope.open = function (id) {
                 $(id).modal();
             }
             $scope.addElement = function (type, name, element, code) {
-
                 var newElem,
                     newPosition = getPositionNewElement();
 
                 $rootScope.isDraggingJustFinished = false;
                 newElem = SegmentBuilderM.getNewCriterion(newPosition, name, type, code);
-                element.type.del=1
+                element.type.remove=1
                 $scope.data.elements.push(newElem);
-                apiCall.genRequest($scope.data);
+                apiCall.getRequest($scope.data).then(function (response) {
+                    connector.setGrid(response);
+                });
             }
 
             // id could be a criterion, segment, or group
@@ -92,11 +101,13 @@ app.directive("segmentBuilderGroupM", function() {
                 for(var a = 0; a < $scope.varstypes.length; a++){
                   for(var b = 0; b < $scope.varstypes[a].elements.length; b++){
                       if($scope.varstypes[a].elements[b].name == element.name){
-                        $scope.varstypes[a].elements[b].del = 0
+                        $scope.varstypes[a].elements[b].remove = 0
                       }
                   }
                 }
-                apiCall.genRequest($scope.data);
+                apiCall.getRequest($scope.data).then(function (response) {
+                    connector.setGrid(response);
+                });
             }
 
             $scope.listRelation = SegmentBuilderM.groupInfo.relation;
@@ -245,15 +256,18 @@ app.directive("dropTargetM", function($rootScope, $timeout, SegmentBuilderM) {
     link: function(scope, element, attrs) {
         element.addClass(attrs.myClass);
 
-        scope.checkIfHide = function() {
-            return (
+
+        scope.checkIfHide = function () {
+            var check = (
                       $rootScope.draggedElement &&
                       (
                         (attrs.hideWhenIdBefore && $rootScope.draggedElement.id == attrs.hideWhenIdBefore) ||
                         (attrs.hideWhenIdAfter && $rootScope.draggedElement.id == attrs.hideWhenIdAfter)
                       )
                   );
+            return check;
         }
+
 
         var dropStyle = 'drag-hover';
 

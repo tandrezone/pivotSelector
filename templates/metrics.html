@@ -17,11 +17,11 @@
                     </div>
                     <div class="modal-body clearfix">
                         <div ng-repeat="vtype in varstypes">
-                            <div ng-show="vtype.type=='Indicators'">
+                            <div ng-show="vtype.type=='Metrics'"><!---->
                                 <div class="columns col-md-12"><h4 class="subtitle text-center  grey"><strong>{{vtype.type}}</strong></h4></div>
                                 <div ng-repeat="type in vtype.elements">
-                                    <div class="columns col-md-6 h50" ng-hide="type.del == 1">
-                                        <div class="columns col-md-10">{{type.name}}</div>
+                                    <div class="columns col-md-6 h50" ng-hide="type.remove == 1">
+                                        <div class="columns col-md-10" data-toggle="tooltip" data-placement="bottom" title="{{type.name}}">{{type.name}}</div>
                                         <div class="columns col-md-2">
                                             <div ng-click="addElement('criterion' ,type.name, this, type.code)"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div>
                                         </div>
@@ -39,8 +39,8 @@
         <!-- end of modal with categories -->
         <div class="options" style="padding-bottom:10px">
             <span ng-hide="level == 1" class="glyphicon glyphicon-move clearfix" aria-hidden="true"></span>
-            <div style="float:left"><p>Relation: <span><select ng-model="data.relation" ng-options="item.value as item.name for item in listRelation" class="form-control input-sm"></select></span></p></div>
-            <div ng-if="level == 1" class="" data-toggle="modal" data-target="#myModalM"><span style="padding-left: 20px;padding-top: 5px;" class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="text-center pull-right">{{dtype}}</span></div>
+            <div style="float:left"><p>Relation: <span><select ng-model="data.relation" ng-change="changeRelation(this)" ng-options="item.value as item.name for item in listRelation" class="form-control input-sm"></select></span></p></div>
+            <div ng-if="level == 1" class="" data-toggle="modal" data-target="#myModalM" ng-click="open('#myModalM')"><span style="padding-left: 20px;padding-top: 5px;" class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="text-center pull-right">{{dtype}}</span></div>
             <div ng-click="deletePlease({id: data.id})" class="pull-right" ng-if="level > 1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
 
         </div>

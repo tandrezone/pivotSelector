@@ -19,8 +19,8 @@
                         <div ng-repeat="vtype in varstypes">
                             <div class="columns col-md-12"><h4 class="subtitle text-center  grey"><strong>{{vtype.type}}</strong></h4></div>
                             <div ng-repeat="type in vtype.elements">
-                                <div class="columns col-md-6 h50" ng-hide="type.del == 1">
-                                    <div class="columns col-md-10">{{type.name}}</div>
+                                <div class="columns col-md-6 h50" ng-hide="type.remove == 1">
+                                    <div class="columns col-md-10" data-toggle="tooltip" data-placement="bottom" title="{{type.name}}">{{type.name}}</div>
                                     <div class="columns col-md-2">
                                         <div ng-click="addElement(type.type ,type.name, this, type.code)"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></div>
                                     </div>
@@ -37,11 +37,11 @@
         <!-- end of modal with categories -->
         <div class="options">
             <span ng-hide="level == 1" class="glyphicon glyphicon-move" aria-hidden="true"></span>
-            <div ng-if="level == 1" class="" data-toggle="modal" data-target="#myModalL"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="text-center pull-right">{{dtype}}</span></div>
+            <div ng-if="level == 1" class="" data-toggle="modal" data-target="#myModalL" ng-click="open('#myModalL')" style="float:left;"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><span class="text-center pull-right">{{dtype}}</span></div>
             <div ng-click="deletePlease({id: data.id})" class="pull-right" ng-if="level > 1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
         </div>
-        <ul ng-show="data.elements.length > 0">
-            <li ng-repeat="element in data.elements | orderBy:'position' as filteredData track by element.id" class="level-{{ level }}" ng-class="{true:'li-group', false:'li-condition'}[element.type == 'group']">
+        <ul ng-show="data.elements.length > 0" class="clearfix">
+            <li ng-repeat="element in data.elements | orderBy:'position' as filteredData track by element.id" style="float:left; min-width:180px;" class="level-{{ level }}" ng-class="{true:'li-group', false:'li-condition'}[element.type == 'group']">
                 <drop-target-l area="lines" ng-if="$index == 0" my-class="first-inside-group" position="0" hide-when-id-after="{{ element.id }}"></drop-target-l>
                 <div ng-switch="element.type">
                     <div ng-switch-when="group">
